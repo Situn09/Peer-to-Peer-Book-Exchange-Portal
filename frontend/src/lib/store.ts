@@ -1,7 +1,7 @@
 import { create } from "zustand";
 import { AppState, Book, User } from "@/types";
 
-const BACKEND_URL = "http://localhost:5000";
+const BACKEND_URL = "https://peer-to-peer-book-exchange-portal.onrender.com";
 
 export const useStore = create<
   AppState & {
