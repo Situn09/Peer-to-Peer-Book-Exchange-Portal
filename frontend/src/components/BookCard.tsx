@@ -31,7 +31,7 @@ export const BookCard = ({ book, showActions = false }: BookCardProps) => {
           {book.isAvailable ? (
             <Badge className="bg-green-500">Available</Badge>
           ) : (
-            <Badge variant="secondary">Unavailable</Badge>
+            <Badge variant="secondary">Rented</Badge>
           )}
         </div>
       </div>

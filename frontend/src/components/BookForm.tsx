@@ -27,6 +27,7 @@ const formSchema = z.object({
   location: z.string().min(2, {
     message: "Location is required.",
   }),
+  // imageUrl: z.string().optional(),
   contact: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -44,6 +45,7 @@ export function BookForm() {
       author: "",
       genre: "",
       location: "",
+      // imageUrl: "",
       contact: currentUser?.email || "",
     },
   });
@@ -67,7 +69,7 @@ export function BookForm() {
 
   return (
     <Form {...form}>
-      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-4">
+      <form onSubmit={form.handleSubmit(onSubmit)} className="space-y-0">
         <FormField
           control={form.control}
           name="title"
@@ -109,6 +111,24 @@ export function BookForm() {
             </FormItem>
           )}
         />
+        {/* <FormField
+          control={form.control}
+          name="imageUrl"
+          render={({ field }) => (
+            <FormItem>
+              <FormLabel>Upload Cover Image (Optional)</FormLabel>
+              <FormControl>
+                <Input
+                  type="file"
+                  accept="image/*"
+                  placeholder="Upload Cover Image of the book"
+                  {...field}
+                />
+              </FormControl>
+              <FormMessage />
+            </FormItem>
+          )}
+        /> */}
 
         <FormField
           control={form.control}
