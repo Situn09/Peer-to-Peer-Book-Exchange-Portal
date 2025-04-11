@@ -119,7 +119,7 @@ cd frontend
 npm install
 npm run dev
 
-Note:- Make sure change backend url path to actual local host back url. you found variable named "BACKEND_URL" in below file where you need to modify.
+Note:- Make sure change backend url path to actual local host backend url. you found variable named "BACKEND_URL" in below file where you need to modify.
 \frontend\src\lib\store.ts
 ```
 
