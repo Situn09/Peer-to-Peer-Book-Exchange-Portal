@@ -96,6 +96,23 @@ router.put("/:id", async (req, res) => {
   res.json({ message: "Status updated", book });
 });
 
+// Add book review (rented/exchanged)
+router.put("/:id/review", async (req, res) => {
+  const bookId = req.params.id;
+  const review = req.body;
+  const books = await readJSON(booksFile);
+  const book = books.find((b) => b.id === bookId);
+  if (!book) {
+    return res.status(404).json({ message: "Book not found" });
+  }
+  const updatedBooks = books.map((b) =>
+    b.id === bookId ? { ...b, reviews: [...b.reviews, review] } : b
+  );
+
+  await writeJSON(booksFile, updatedBooks);
+  res.json({ message: "Review added" });
+});
+
 // Delete book
 router.delete("/:id", async (req, res) => {
   const bookId = req.params.id;

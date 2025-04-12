@@ -1,5 +1,5 @@
 import { create } from "zustand";
-import { AppState, Book, User } from "@/types";
+import { AppState, Book, Review, User } from "@/types";
 
 export const BACKEND_URL =
   "https://peer-to-peer-book-exchange-portal.onrender.com";
@@ -14,6 +14,7 @@ export const useStore = create<
     addBook: (
       book: Omit<Book, "id" | "ownerId" | "createdAt" | "isAvailable">
     ) => Promise<Book>;
+    addBookReview: (bookId: string, review: Review) => Promise<void>;
     toggleBookAvailability: (bookId: string) => Promise<void>;
     deleteBook: (bookId: string) => Promise<void>;
   }
@@ -108,6 +109,16 @@ export const useStore = create<
 
     get().fetchBooks();
     return newBook;
+  },
+
+  addBookReview: async (bookId, review) => {
+    await fetch(`${BACKEND_URL}/api/books/${bookId}/review`, {
+      method: "PUT",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify(review),
+    });
+
+    get().fetchBooks();
   },
 
   toggleBookAvailability: async (bookId) => {

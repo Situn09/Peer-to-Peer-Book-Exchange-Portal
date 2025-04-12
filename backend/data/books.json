@@ -9,6 +9,26 @@
     "ownerId": "1",
     "isAvailable": true,
     "imageUrl": "https://images.unsplash.com/photo-1541963463532-d68292c34b19?q=80&w=388&auto=format&fit=crop",
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "rating": 5,
+        "comment": "Amazing service! Highly recommended."
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "rating": 4,
+        "comment": "Great experience, will use again."
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "rating": 3,
+        "comment": "It was okay, could be better."
+      }
+    ],
     "createdAt": 1712808800000
   },
   {
@@ -21,6 +41,50 @@
     "ownerId": "1",
     "isAvailable": true,
     "imageUrl": "https://images.unsplash.com/photo-1543002588-bfa74002ed7e?q=80&w=387&auto=format&fit=crop",
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "rating": 5,
+        "comment": "Amazing service! Highly recommended."
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "rating": 4,
+        "comment": "Great experience, will use again."
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "rating": 3,
+        "comment": "It was okay, could be better."
+      },
+      {
+        "id": 815,
+        "name": "Anonymous",
+        "rating": 5,
+        "comment": "very good book"
+      },
+      {
+        "id": 732,
+        "name": "Anonymous",
+        "rating": 4,
+        "comment": "best book\n"
+      },
+      {
+        "id": 384,
+        "name": "Anonymous",
+        "rating": 2,
+        "comment": "hello"
+      },
+      {
+        "id": 47,
+        "name": "John Doe",
+        "rating": 3,
+        "comment": "another test review"
+      }
+    ],
     "createdAt": 1712608800000
   },
   {
@@ -32,6 +96,26 @@
     "ownerId": "1",
     "isAvailable": true,
     "imageUrl": "https://images.unsplash.com/photo-1544947950-fa07a98d237f?q=80&w=387&auto=format&fit=crop",
+    "reviews": [
+      {
+        "id": 1,
+        "name": "Alice",
+        "rating": 5,
+        "comment": "Amazing service! Highly recommended."
+      },
+      {
+        "id": 2,
+        "name": "Bob",
+        "rating": 4,
+        "comment": "Great experience, will use again."
+      },
+      {
+        "id": 3,
+        "name": "Charlie",
+        "rating": 3,
+        "comment": "It was okay, could be better."
+      }
+    ],
     "createdAt": "2025-04-11T13:29:57.752Z"
   }
 ]

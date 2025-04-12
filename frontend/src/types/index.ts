@@ -9,6 +9,13 @@ export interface User {
   role: UserRole;
 }
 
+export interface Review {
+  id: number;
+  name: string;
+  rating: number;
+  comment: string;
+}
+
 export interface Book {
   id: string;
   title: string;
@@ -19,6 +26,7 @@ export interface Book {
   ownerId: string;
   isAvailable: boolean;
   imageUrl?: string;
+  reviews?: Review[];
   createdAt: number;
 }
 

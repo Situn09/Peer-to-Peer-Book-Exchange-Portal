@@ -22,8 +22,17 @@ A mini full-stack web application that connects **Book Owners** (who list books 
 
 ### 📤 Image Upload
 
-- Owners can upload a book cover image (Not implemented, work in progress)
+- Owners can upload a book cover image
 - Images are stored on the backend and served via `/uploads/`
+
+### ✍️ User Reviews
+
+- Visitors can leave a review for any book
+- Review includes:
+  - ⭐ Star rating (1 to 5)
+  - 📝 Optional written comment
+- Users can choose to post **as Anonymous** or with their **display name**
+- All reviews are shown publicly under the book's review section
 
 ---
 
