@@ -1,7 +1,8 @@
 import { create } from "zustand";
 import { AppState, Book, User } from "@/types";
 
-const BACKEND_URL = "https://peer-to-peer-book-exchange-portal.onrender.com";
+export const BACKEND_URL =
+  "https://peer-to-peer-book-exchange-portal.onrender.com";
 
 export const useStore = create<
   AppState & {
@@ -11,10 +12,7 @@ export const useStore = create<
     logout: () => void;
     register: (user: Omit<User, "id">) => Promise<User>;
     addBook: (
-      book: Omit<
-        Book,
-        "id" | "ownerId" | "createdAt" | "isAvailable" | "imageUrl"
-      >
+      book: Omit<Book, "id" | "ownerId" | "createdAt" | "isAvailable">
     ) => Promise<Book>;
     toggleBookAvailability: (bookId: string) => Promise<void>;
     deleteBook: (bookId: string) => Promise<void>;
@@ -97,6 +95,7 @@ export const useStore = create<
       ownerId: currentUser.id,
       isAvailable: true,
       imageUrl:
+        bookData.imageUrl ||
         sampleBookCovers[Math.floor(Math.random() * sampleBookCovers.length)],
       createdAt: Date.now(),
     };

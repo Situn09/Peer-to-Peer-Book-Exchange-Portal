@@ -11,10 +11,10 @@ import {
   FormMessage,
 } from "@/components/ui/form";
 import { Input } from "@/components/ui/input";
-// import { useStore } from "@/lib/store";
 import { useToast } from "@/components/ui/use-toast";
 import { useNavigate } from "react-router-dom";
-import { useStore } from "@/lib/store";
+import { BACKEND_URL, useStore } from "@/lib/store";
+import { useState } from "react";
 
 const formSchema = z.object({
   title: z.string().min(2, {
@@ -27,7 +27,7 @@ const formSchema = z.object({
   location: z.string().min(2, {
     message: "Location is required.",
   }),
-  // imageUrl: z.string().optional(),
+  imageUrl: z.string().optional(),
   contact: z.string().email({
     message: "Please enter a valid email address.",
   }),
@@ -37,6 +37,14 @@ export function BookForm() {
   const { addBook, currentUser } = useStore();
   const { toast } = useToast();
   const navigate = useNavigate();
+  const [image, setImage] = useState(null);
+  const [preview, setPreview] = useState(null);
+
+  const handleImageChange = (e) => {
+    const file = e.target.files[0];
+    setImage(file);
+    setPreview(URL.createObjectURL(file));
+  };
 
   const form = useForm<z.infer<typeof formSchema>>({
     resolver: zodResolver(formSchema),
@@ -45,14 +53,40 @@ export function BookForm() {
       author: "",
       genre: "",
       location: "",
-      // imageUrl: "",
+      imageUrl: "",
       contact: currentUser?.email || "",
     },
   });
 
-  function onSubmit(values: z.infer<typeof formSchema>) {
+  async function onSubmit(values: z.infer<typeof formSchema>) {
     try {
-      addBook(values);
+      let uploadedImageUrl = "";
+
+      // Upload image first
+      if (image) {
+        const formData = new FormData();
+        formData.append("image", image);
+
+        const res = await fetch(`${BACKEND_URL}/api/books/upload`, {
+          method: "POST",
+          body: formData,
+        });
+
+        if (!res.ok) {
+          throw new Error(`HTTP error! status: ${res.status}`);
+        }
+        const data = await res.json();
+        uploadedImageUrl = data.imageUrl;
+      }
+
+      addBook({
+        title: values.title!,
+        author: values.author!,
+        genre: values.genre,
+        location: values.location!,
+        contact: values.contact!,
+        imageUrl: uploadedImageUrl,
+      });
       toast({
         title: "Book added successfully",
         description: "Your book has been listed for exchange.",
@@ -111,7 +145,7 @@ export function BookForm() {
             </FormItem>
           )}
         />
-        {/* <FormField
+        <FormField
           control={form.control}
           name="imageUrl"
           render={({ field }) => (
@@ -122,13 +156,13 @@ export function BookForm() {
                   type="file"
                   accept="image/*"
                   placeholder="Upload Cover Image of the book"
-                  {...field}
+                  onChange={handleImageChange}
                 />
               </FormControl>
               <FormMessage />
             </FormItem>
           )}
-        /> */}
+        />
 
         <FormField
           control={form.control}

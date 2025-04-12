@@ -2,7 +2,6 @@ import { Book } from "@/types";
 import { Card, CardContent, CardFooter } from "@/components/ui/card";
 import { Badge } from "@/components/ui/badge";
 import { Button } from "@/components/ui/button";
-// import { useStore } from "@/lib/store";
 import { Link } from "react-router-dom";
 import { formatDistanceToNow } from "date-fns";
 import { useStore } from "@/lib/store";

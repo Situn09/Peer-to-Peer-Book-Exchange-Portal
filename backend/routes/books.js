@@ -29,14 +29,29 @@ router.get("/", async (req, res) => {
   res.json(books);
 });
 
+// Route to handle upload cover image
+router.post("/upload", upload.single("image"), (req, res) => {
+  if (!req.file) {
+    return res.status(400).json({ message: "No file uploaded" });
+  }
+
+  res.json({
+    message: "File uploaded successfully",
+    imageUrl: `http://localhost:5000/uploads/${req.file.filename}`,
+  });
+});
+
 // Add new book
-router.post("/", upload.single("coverImage"), async (req, res) => {
+router.post("/", async (req, res) => {
   const {
+    id,
     title,
     author,
     genre,
     location,
     contactEmail,
+    imageUrl,
+    isAvailable,
     contactPhone,
     ownerId,
   } = req.body;
