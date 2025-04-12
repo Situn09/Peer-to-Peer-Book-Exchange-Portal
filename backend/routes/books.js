@@ -37,7 +37,7 @@ router.post("/upload", upload.single("image"), (req, res) => {
 
   res.json({
     message: "File uploaded successfully",
-    imageUrl: `http://localhost:5000/uploads/${req.file.filename}`,
+    imageUrl: `https://peer-to-peer-book-exchange-portal.onrender.com/uploads/${req.file.filename}`,
   });
 });
 
