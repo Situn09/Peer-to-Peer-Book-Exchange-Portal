@@ -145,14 +145,6 @@ Note:- Make sure change backend url path to actual local host backend url. you f
 
 ---
 
-## 🧠 AI Tools Used
-
-- 💡 [ChatGPT](https://chat.openai.com) for project planning and code generation
-- lovable for forntend ui design
-- 🤖 GitHub Copilot for inline suggestions
-
----
-
 ## ✅ What's Working
 
 - Registration + Login
